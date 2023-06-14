@@ -8,6 +8,7 @@ from torchvision.transforms import ToTensor
 
 def load_data(logger=None, batch_size=64):
     """
+    train_loader, test_loader = load_data(logger, batch_size)
     Load and prepare NMINST dataset for training and evaluating. logger is a logging object, batch_size is the batch size for training and testing (default: 64).
     """
     # Download training data from open datasets.
@@ -32,7 +33,11 @@ def load_data(logger=None, batch_size=64):
     if logger is not None:  # Add logging information
         logger.info("[load_data]: Data loaders created")
         logger.info(f"[load_data]: Training data size: {len(training_data)}")
-        logger.info(f"[load_data]: Training data size: {len(training_data)}")
+        logger.info(f"[load_data]: Test data size: {len(test_data)}")
+    else:
+        print("[load_data]: Data loaders created")
+        print(f"[load_data]: Training data size: {len(training_data)}")
+        print(f"[load_data]: Test data size: {len(test_data)}")
     return train_dataloader, test_dataloader
 
 
