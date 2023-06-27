@@ -26,6 +26,12 @@ def matplotlib_imshow(img, one_channel=False):
 
 @torch.no_grad()
 def plot_original_noisy_denoised_batches(o, n, d):
+    # normalize images to range [0,1]
+    def normlize_tensor(t):
+        t = t - torch.min(t)
+        t = t / torch.max(t)
+        return t
+    o, n, d = normlize_tensor(o), normlize_tensor(n), normlize_tensor(d)
     images = torch.cat((o, n, d), dim=3)
     images = images.cpu()
     fig = show_batch(images)

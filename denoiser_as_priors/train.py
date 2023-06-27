@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from utils import add_gaussian_noise, plot_original_noisy_denoised_batches, matplotlib_imshow
 from model import save_model
 import numpy as np
+import os
 
 
 def train(
